@@ -188,24 +188,6 @@ See `ENV_VARIABLES.md` for complete documentation of all supported environment v
 - **Input Size**: 112x112 pixels
 - **Output**: Identity classification logits
 
-## Requirements
-
-- Python 3.8+
-- PyTorch 2.4.0
-- TorchVision 0.19.0
-- CUDA 12.1 (for GPU support)
-- NumPy 1.24.3
-- Pillow 9.5.0
-- PyYAML 5.4.1
-- EasyDict 1.9
-- SciPy 1.10.1
-
-## Docker Requirements
-
-- Docker 20.10+
-- NVIDIA Docker Runtime (for GPU support)
-- NVIDIA Driver 525.60.13+ (for CUDA 12.1)
-
 ## Examples
 
 ### Example 1: PGD Attack on LFW Dataset
@@ -245,20 +227,5 @@ docker run --rm --gpus all \
   -e DEVICE=0 \
   nudt_arcface:latest
 ```
-
-## Testing
-
-The project includes test scripts to validate functionality:
-
-```bash
-# Run all tests
-pytest
-
-# Run specific test
-pytest test_attacks.py
-```
-
-### Issue: Model weights not loading
-**Solution**: Ensure weights file exists in `input/model/` directory
 
 
