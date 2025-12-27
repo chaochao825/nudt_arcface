@@ -14,7 +14,7 @@ def parse_args():
     parser.add_argument('--output_path', type=str, default='./output', help='output path')
     
     parser.add_argument('--process', type=str, default='attack', help='[adv, attack, defend, train, inference_1_1, inference_1_n, attack_defense_eval, dataset_sampling]')
-    parser.add_argument('--model', type=str, default='deepface', help='model name')
+    parser.add_argument('--model', type=str, default='arcface', help='model name')
     parser.add_argument('--data', type=str, default='lfw', help='data name [vggface2, celeba, webface, lfw, yaleb, megaface]')
     parser.add_argument('--num_classes', type=int, default=1000, help='number of classes')
     parser.add_argument('--sample_count', type=int, default=100, help='number of images to sample')
@@ -38,7 +38,12 @@ def parse_args():
     args_dict = vars(args)
     args_dict_environ = {}
     for key, value in args_dict.items():
-        args_dict_environ[key] = type_switch(os.getenv(key.upper(), value), value)
+        # Keep INPUT_PATH and OUTPUT_PATH as uppercase, others as lowercase
+        if key in ['input_path', 'output_path']:
+            env_val = os.getenv(key.upper(), value)
+        else:
+            env_val = os.getenv(key.lower(), value)
+        args_dict_environ[key] = type_switch(env_val, value)
     args_easydict = EasyDict(args_dict_environ)
     return args_easydict
 
