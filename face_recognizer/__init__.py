@@ -1,3 +1,8 @@
-from .arcface_model import ArcFaceModel
+__all__ = []
 
-__all__ = ['ArcFaceModel']
+try:
+    from .arcface_model import ArcFaceModel
+
+    __all__.append("ArcFaceModel")
+except Exception:
+    ArcFaceModel = None
