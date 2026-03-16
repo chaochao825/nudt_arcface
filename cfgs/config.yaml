@@ -1,11 +1,11 @@
-batch: 8
+batch: 1
 data: lfw
 data_path: ./input/data
-device: cuda:0
+device: cpu
 half: false
-mode: inference_1_1
+mode: defend
 model: arcface
-name: inference_1_1
+name: defend
 num_classes: 1000
 project: arcface
 save_dir: ./output
