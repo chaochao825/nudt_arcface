@@ -1,12 +1,13 @@
 batch: 1
 data: lfw
 data_path: ./input/data
-device: cpu
+device: cuda:0
 half: false
-mode: defend
+mode: adv
 model: arcface
-name: defend
+name: adv
 num_classes: 1000
+pretrained: null
 project: arcface
 save_dir: ./output
 selected_samples: 10
